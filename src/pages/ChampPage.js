@@ -1,7 +1,7 @@
 import React from "react";
-import { spacing } from "@mui/system";
 
-import { Routes, Route, useParams } from "react-router-dom";
+
+import {  useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -9,6 +9,7 @@ import "../App.css";
 import { Avatar } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Skins from "../components/Skins";
+import NextBack from "../components/NextBack";
 const ChampPage = () => {
   const { id } = useParams();
   const champAPI = `http://ddragon.leagueoflegends.com/cdn/12.11.1/data/es_AR/champion/${id}.json`;
@@ -16,8 +17,8 @@ const ChampPage = () => {
   const [onlyChamp, setOnlyChamp] = React.useState([]);
   const [onlySkins, setOnlySkins] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  const [trueimg,setTrueImg] = React.useState();
-  const [trueDes,settrueDes]= React.useState();
+  const [trueimg, setTrueImg] = React.useState();
+  const [trueDes, settrueDes] = React.useState();
 
   function fetchHook() {
     fetch(champAPI)
@@ -42,11 +43,10 @@ const ChampPage = () => {
   function handleClick(e) {
     e.preventDefault();
     const img = e.target.src;
-    setTrueImg(img)
+    setTrueImg(img);
   }
-  function handleText(name,description) {
-    
-    settrueDes ({name:name,description:description})
+  function handleText(name, description) {
+    settrueDes({ name: name, description: description });
   }
 
   return (
@@ -63,9 +63,10 @@ const ChampPage = () => {
               justifyContent: "center",
               border: "1px solid green",
 
-              flexDirection: "row",
+              flexDirection: "column",
             }}
           >
+           <div style={{"width":"100%"}}><NextBack/></div>
             {/* Este es el contenedor de imagen*/}
             <Container
               sx={{
@@ -81,7 +82,10 @@ const ChampPage = () => {
                   height: 300,
                 }}
               >
-                <img className="imgresize" src={ trueimg? trueimg   :imgLinkInit(champ.id)}></img>
+                <img
+                  className="imgresize"
+                  src={trueimg ? trueimg : imgLinkInit(champ.id)}
+                ></img>
               </Box>
 
               <Container
@@ -150,10 +154,12 @@ const ChampPage = () => {
                   );
                 })}
 
-                <Divider /> 
-                <Divider /> 
-                <h3>{ trueDes ? trueDes.name : champ.passive.name}</h3>
-                <p>{trueDes ? trueDes.description  :champ.passive.description}</p>
+                <Divider />
+                <Divider />
+                <h3>{trueDes ? trueDes.name : champ.passive.name}</h3>
+                <p>
+                  {trueDes ? trueDes.description : champ.passive.description}
+                </p>
               </Container>
             </Container>
           </Container>
