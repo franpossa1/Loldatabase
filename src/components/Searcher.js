@@ -1,10 +1,10 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
-import { Card } from "@mui/material";
+
 import React from "react";
 
-const Searcher = ()=>{
+const Searcher = (props)=>{
     return(
 <Container
       sx={{
@@ -12,7 +12,7 @@ const Searcher = ()=>{
         flexDirection: "row",
         flexWrap: "wrap",
         width: "auto",
-        border: "1px solid red",
+       
         justifyContent: "center",
       }}
     >
@@ -21,14 +21,13 @@ const Searcher = ()=>{
         id="outlined-basic"
         label="Champion"
         variant="outlined"
+        onChange={(e)=> props.filtrado(e)}
       />
 
       <Button sx={{ m: 1 }} variant="contained">
         Buscar Campeon
       </Button>
-      <Button sx={{ m: 1 }} variant="outlined">
-        Crear Campeon
-      </Button>
+      
       </Container>
 
 

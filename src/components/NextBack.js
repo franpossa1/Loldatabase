@@ -11,7 +11,7 @@ const NextBack = () =>{
              
               display: "flex",
               justifyContent: "space-between",
-              border: "1px solid green",
+              
 
               flexDirection: "row",
             }}

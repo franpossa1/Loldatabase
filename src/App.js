@@ -13,7 +13,7 @@ function App() {
           flexDirection: "row",
           flexWrap: "wrap",
           width: "auto",
-          border: "1px solid red",
+        
           justifyContent: "center",
         }}
       >
